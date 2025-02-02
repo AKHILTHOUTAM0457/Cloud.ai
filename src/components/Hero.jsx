@@ -18,7 +18,6 @@ const Hero = () => {
             DevOps engineers passionate about making multi-cloud management
             accessible and efficient for businesses of all sizes.
           </p>
-          <h3 className="hero-highlight">Our Mission</h3>
         </div>
       </div>
     </section>
