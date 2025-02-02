@@ -1,0 +1,32 @@
+.animated-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(270deg, #000428, #004e92, #000428);
+    background-size: 600% 600%;
+    z-index: -1;
+  }
+  
+  .glowing-orb {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.3) 0%, rgba(65, 105, 225, 0.1) 70%, rgba(0, 0, 0, 0) 100%);
+    filter: blur(20px);
+    animation: float 10s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(30px, -30px);
+    }
+  }
+  
+  
