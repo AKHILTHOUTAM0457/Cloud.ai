@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../styles/Header.css";
 
 const Header = () => {
@@ -15,22 +16,24 @@ const Header = () => {
 
   return (
     <header className={`header ${scrolled ? "scrolled" : ""}`}>
-      <div className="logo">
-        <span className="cloudai-title">CloudAI</span>
+      <div className="header-content">
+        <div className="logo">
+          <span className="cloudai-title">CloudAI</span>
+        </div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/#features">Features</Link>
+            </li>
+            <li>
+              <Link to="/#about">About Us</Link>
+            </li>
+            <li>
+              <Link to="/#contact">Contact Us</Link>
+            </li>
+          </ul>
+        </nav>
       </div>
-      <nav>
-        <ul>
-          <li>
-            <a href="#features">Features</a>
-          </li>
-          <li>
-            <a href="#about">About Us</a>
-          </li>
-          <li>
-            <a href="#contact">Contact Us</a>
-          </li>
-        </ul>
-      </nav>
       <div className="glowing-line"></div>
     </header>
   );

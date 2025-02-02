@@ -23,10 +23,10 @@ const ContactUs = () => {
 
     emailjs
       .send(
-        "service_2slemcf",
-        "template_0f6z61g",
+        "service_0btaugo",
+        "template_sfouxjg",
         formData,
-        "BOxiBXYpjqP35Avnr"
+        "RHFejrdihhY_u48ok"
       )
       .then(
         (response) => {
@@ -44,7 +44,10 @@ const ContactUs = () => {
   return (
     <section className="contact-us" id="contact">
       <AnimatedBackground />
-      <h2>Contact Us</h2>
+      <h2>
+        Contact Us
+        <span className="glowing-line"></span>
+      </h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

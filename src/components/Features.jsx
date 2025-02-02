@@ -1,111 +1,99 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { Bot, LineChart, Cog, Zap, Shield, Brain } from "lucide-react";
+import { useState } from "react";
+import { Shield, Zap, BarChart2, Sliders, BookOpen, Cpu } from "lucide-react";
 import "../styles/Features.css";
 import AnimatedBackground from "./AnimatedBackground";
 
 const features = [
   {
-    icon: Bot,
-    title: "AI-Powered Solutions",
+    icon: <Shield size={24} />,
+    title: "AI Powered Unified Cloud Management",
     description:
-      "Harness the power of AI to transform your business processes.",
-    gradient: "from-violet-600 to-indigo-600",
-    shadowColor: "violet-500",
+      "Manage all your cloud resources across providers in one intelligent platform",
+    details:
+      "Real-time resource monitoring and management, Intelligent resource allocation and optimization, Automated deployment and configuration, AI-driven performance monitoring and alerting, Smart capacity and scaling recommendations.",
   },
   {
-    icon: LineChart,
+    icon: <Zap size={24} />,
+    title: "Pre-built Business Templates",
+    description:
+      "Industry specific solutions with pre-defined templates for multiple common scenarios",
+    details:
+      "Templates for E-commerce, Content Management systems, Data analytics environment, Machine Learning infrastructures, DevOps environment, Microservices architectures, etc.",
+  },
+  {
+    icon: <BarChart2 size={24} />,
     title: "Advanced Analytics",
-    description: "Gain deep insights with our cutting-edge analytical tools.",
-    gradient: "from-emerald-600 to-teal-600",
-    shadowColor: "emerald-500",
+    description: "Data-driven insights at your fingertips",
+    details:
+      "Custom dashboard creation, Resource utilization reports, Cost allocation reports, Performance metrics, Compliance reports, Usage trending",
   },
   {
-    icon: Cog,
-    title: "Automated Workflows",
-    description: "Streamline operations with intelligent automation and ML.",
-    gradient: "from-pink-600 to-rose-600",
-    shadowColor: "pink-500",
-  },
-  {
-    icon: Zap,
-    title: "Real-time Processing",
+    icon: <Sliders size={24} />,
+    title: "AI-driven Operations",
     description:
-      "Process and analyze data in real-time for immediate insights.",
-    gradient: "from-amber-500 to-orange-600",
-    shadowColor: "amber-500",
+      "Our AI agent monitors and provides optimization recommendations",
+    details:
+      "Automated resource health monitoring, Predictive maintenance, Performance optimization, Security vulnerability detection, Compliance monitoring, Log Analysis and insights and many more..",
   },
   {
-    icon: Shield,
-    title: "Enhanced Security",
-    description: "State-of-the-art measures to protect your valuable data.",
-    gradient: "from-blue-600 to-cyan-600",
-    shadowColor: "blue-500",
+    icon: <BookOpen size={24} />,
+    title: "Smart Resource Selection",
+    description:
+      "AI-suggested resource recommendations analyzing cost and performance",
+    details:
+      "AI-driven CSP and service recommendations, Workload specific provider suggestions, Region and availability zone optimization, Service compatibility checking, Comparative pricing analysis between different CSP's",
   },
   {
-    icon: Brain,
-    title: "Smart Learning",
-    description: "Adaptive systems that learn from your business patterns.",
-    gradient: "from-purple-600 to-fuchsia-600",
-    shadowColor: "purple-500",
+    icon: <Cpu size={24} />,
+    title: "Excel-Based Bulk Deployment",
+    description: "Deploy resources across multiple CSPs using Excel sheets",
+    details:
+      "Download a formatted Excel sheet from our tool or edit it directly according to your infrastructure's needs",
   },
 ];
 
 function FeatureCard({
-  icon: Icon,
+  icon,
   title,
   description,
-  gradient,
-  shadowColor,
+  details,
+  isHovered,
+  onHover,
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
-      className={`feature-card ${gradient}`}
+    <div
+      className={`feature-card ${isHovered ? "hovered" : ""}`}
+      onMouseEnter={() => onHover(true)}
+      onMouseLeave={() => onHover(false)}
     >
-      <div className="feature-card-content">
-        <div className={`feature-icon ${gradient} shadow-${shadowColor}`}>
-          <Icon className="icon" />
-        </div>
-        <h3 className="feature-title">{title}</h3>
-        <p className="feature-description">{description}</p>
+      <div className="feature-icon">{icon}</div>
+      <h3 className="feature-title">{title}</h3>
+      <p className="feature-description">{description}</p>
+      <div className="feature-details">
+        <p>{details}</p>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
 export default function Features() {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
   return (
-    <section className="features-section">
+    <section id="features" className="features-section">
       <AnimatedBackground />
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="features-header"
-        >
-          <h2 className="features-title">Our Features</h2>
-          <p className="features-subtitle">
-            Discover the powerful features that make our platform stand out
-          </p>
-        </motion.div>
-
-        <div className="features-grid">
-          {features.map((feature, index) => (
-            <FeatureCard key={index} {...feature} />
-          ))}
-        </div>
-      </div>
-
-      <div className="background-effects">
-        <div className="bg-effect bg-effect-1" />
-        <div className="bg-effect bg-effect-2" />
+      <h2 className="features-title">
+        Powerful Tools for Smart Cloud Management
+      </h2>
+      <div className="features-container">
+        {features.map((feature, index) => (
+          <FeatureCard
+            key={index}
+            {...feature}
+            isHovered={hoveredIndex === index}
+            onHover={(isHovered) => setHoveredIndex(isHovered ? index : null)}
+          />
+        ))}
       </div>
     </section>
   );

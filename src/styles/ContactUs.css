@@ -11,6 +11,30 @@
   background: linear-gradient(45deg, #00ffff, #4169e1, #ff1493);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.contact-us h2 .glowing-line {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  animation: glowingLine 3s linear infinite;
+}
+
+@keyframes glowingLine {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 form {
@@ -26,18 +50,18 @@ input,
 textarea {
   margin-bottom: 1rem;
   padding: 1rem;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.1);
   color: white;
-  font-family: inherit;
+  font-family: "Roboto", sans-serif;
   font-size: 1rem;
 }
 
 input::placeholder,
 textarea::placeholder {
   color: rgba(255, 255, 255, 0.7);
-  font-family: inherit;
+  font-family: "Roboto", sans-serif;
 }
 
 textarea {
@@ -46,16 +70,19 @@ textarea {
 }
 
 button {
-  padding: 2%;
-  width: 15%;;
+  padding: 0.75rem 1.5rem;
+  width: auto;
+  max-width: 120px;
   border: none;
   border-radius: 5px;
   background: linear-gradient(45deg, #00ffff, #4169e1);
   color: white;
-  font-size: 1.1rem;
-  font-family: inherit;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 auto;
+  display: block;
 }
 
 button:hover {
@@ -88,5 +115,42 @@ button:hover {
   margin-top: 1rem;
   text-align: center;
   font-weight: bold;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .contact-us {
+    padding: 4rem 1rem;
+  }
+
+  .contact-us h2 {
+    font-size: 2rem;
+  }
+
+  input,
+  textarea {
+    font-size: 0.9rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-us h2 {
+    font-size: 1.8rem;
+  }
+
+  input,
+  textarea {
+    font-size: 0.8rem;
+  }
+
+  button {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+  }
 }
 
